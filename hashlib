@@ -1,0 +1,70 @@
+import json
+import getpass
+import hashlib
+
+def generate_hash(password):
+    # Generiere einen SHA-256-Hash des Passworts
+    sha256 = hashlib.sha256()
+    sha256.update(password.encode('utf-8'))
+    return sha256.hexdigest()
+
+def save_passwords(passwords):
+    # Speichere die Passwörter in einer JSON-Datei
+    with open('passwords.json', 'w') as file:
+        json.dump(passwords, file, indent=2)
+    print("Passwörter erfolgreich gespeichert.")
+
+def load_passwords():
+    # Lade die Passwörter aus der JSON-Datei
+    try:
+        with open('passwords.json', 'r') as file:
+            passwords = json.load(file)
+    except FileNotFoundError:
+        passwords = {}
+    return passwords
+
+def show_passwords(passwords):
+    # Zeige alle gespeicherten Benutzernamen und Passwörter
+    if not passwords:
+        print("Keine Passwörter vorhanden.")
+    else:
+        print("Gespeicherte Passwörter:")
+        for username, hashed_password in passwords.items():
+            print(f"Benutzername: {username}, Passwort: {hashed_password}")
+
+def add_password(passwords):
+    # Füge einen neuen Benutzer und ein Passwort hinzu
+    username = input("Geben Sie den Benutzernamen ein: ")
+    password = getpass.getpass("Geben Sie das Passwort ein: ")
+    hashed_password = generate_hash(password)
+    passwords[username] = hashed_password
+    print("Passwort hinzugefügt.")
+
+def main():
+    print("Willkommen zur Passwortverwaltungs-App!")
+
+    # Lade vorhandene Passwörter
+    passwords = load_passwords()
+
+    while True:
+        print("\n1. Gespeicherte Passwörter anzeigen")
+        print("2. Neues Passwort hinzufügen")
+        print("3. Passwörter speichern")
+        print("0. Beenden")
+
+        choice = input("Bitte wählen Sie eine Option: ")
+
+        if choice == "1":
+            show_passwords(passwords)
+        elif choice == "2":
+            add_password(passwords)
+        elif choice == "3":
+            save_passwords(passwords)
+        elif choice == "0":
+            print("Beende das Programm.")
+            break
+        else:
+            print("Ungültige Eingabe. Bitte versuchen Sie es erneut.")
+
+if __name__ == "__main__":
+    main()
