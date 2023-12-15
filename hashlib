@@ -50,21 +50,4 @@ def main():
         print("\n1. Gespeicherte Passwörter anzeigen")
         print("2. Neues Passwort hinzufügen")
         print("3. Passwörter speichern")
-        print("0. Beenden")
-
-        choice = input("Bitte wählen Sie eine Option: ")
-
-        if choice == "1":
-            show_passwords(passwords)
-        elif choice == "2":
-            add_password(passwords)
-        elif choice == "3":
-            save_passwords(passwords)
-        elif choice == "0":
-            print("Beende das Programm.")
-            break
-        else:
-            print("Ungültige Eingabe. Bitte versuchen Sie es erneut.")
-
-if __name__ == "__main__":
-    main()
+        print("0. Beenden"
