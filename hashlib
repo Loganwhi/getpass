@@ -5,15 +5,7 @@ import hashlib
 def generate_hash(password):
     # Generiere einen SHA-256-Hash des Passworts
     sha256 = hashlib.
-        with open('passwords.json', 'r') as file:
-            passwords = json.load(file)
-    except FileNotFoundError:
-        passwords = {}
-    return passwords
-
-def show_passwords(passwords):
-    # Zeige alle gespeicherten Benutzernamen und Passwörter
-    if not passwords:
+        wit
         print("Keine Passwörter vorhanden.")
     else:
         print("Gespeicherte Passwörter:")
