@@ -8,15 +8,6 @@ def generate_hash(password):
         wit
         print("Keine Passwörter vorhanden.")
     else:
-        print("Gespeicherte Passwörter:")
-        for username, hashed_password in passwords.items():
-            print(f"Benutzername: {username}, Passwort: {hashed_password}")
-
-def add_password(passwords):
-    # Füge einen neuen Benutzer und ein Passwort hinzu
-    username = input("Geben Sie den Benutzernamen ein: ")
-    password = getpass.getpass("Geben Sie das Passwort ein: ")
-    hashed_password = generate_hash(password)
     passwords[username] = hashed_password
     print("Passwort hinzugefügt.")
 
