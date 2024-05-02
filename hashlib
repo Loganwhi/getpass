@@ -1,18 +1,5 @@
 import json
 import getpass
-import hashlib
-
-def generate_hash(password):
-    # Generiere einen SHA-256-Hash des Passworts
-    sha256 = hashlib.
-        wit
-        print("Keine Passwörter vorhanden.")
-    else:
-    passwords[username] = hashed_password
-    print("Passwort hinzugefügt.")
-
-def main():
-    print("Willkommen zur Passwortverwaltungs-App!")
 
     # Lade vorhandene Passwörter
     passwords = load_passwords()
